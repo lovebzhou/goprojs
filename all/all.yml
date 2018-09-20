@@ -1,0 +1,28 @@
+#global
+
+g_config1: g_config1_value
+
+# go tool pprof http://localhost:6060/debug/pprof
+# To use pprof, link this package into your program:
+#	import _ "net/http/pprof"
+debug: 
+  port: 7654
+
+api:
+  port: 8080
+
+b2s:
+  port: 8080
+  
+c2s:
+  - id: sock1
+
+    transport:
+      type: socket
+      port: 9898
+
+  - id: ws1
+
+    transport:
+      type: websocket
+      port: 8088
