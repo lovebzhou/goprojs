@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#000000">
+   
+  <title>Login Demo</title>
+  <link href="static/assets/css/com.css" rel="stylesheet">
+  <style type="text/css">
+    .wrap {
+        margin: 100px auto 40px;
+        width: 400px;
+        min-height: 360px;
+        -webkit-text-size-adjust: 100%;
+    }
+
+    .wrap h1 {
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    .container {
+      padding: 40px;
+      background-color: #fff;
+      box-shadow: 0 0 6px rgba(0,0,0,.1);
+      border-radius: 3px;
+    }
+
+    .container .box {
+      margin: 0;
+      padding: 0;
+      border: none;
+      border-top: 1px solid #eeecec;
+    }
+
+    legend {
+      display: block;
+      padding-inline-start: 2px;
+      padding-inline-end: 2px;
+      border-width: initial;
+      border-style: none;
+      border-color: initial;
+      border-image: initial;
+    }
+
+    .box legend {
+      margin: 0 auto;
+      padding: 0 5px;
+      font-size: 14px;
+      color: #9f9f9f;
+      text-align: center;
+    }
+
+    .box form {
+      margin: 0;
+      padding: 20px 0 0;
+    }
+
+    .box .text {
+      display: block;
+      margin: 0 0 15px;
+      padding: 6px;
+      width: 100%;
+      color: rgb(0, 0, 0);
+      border: 1px solid #d5d5d5;
+      box-sizing: border-box;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+      outline: none;
+      font-size: 14px;
+      background-color: rgb(250, 255, 189) !important;
+      background-image: none !important;
+    }
+    
+    .box .btn {
+      display: block;
+      margin-top: 20px;
+      padding: 6px;
+      width: 100%;
+      border: 1px solid #008ed2;
+      background: #008ed2;
+      border-radius: 3px;
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="container">
+      <div class="box">
+          <legend >登录</legend>
+          <form method="POST" action="login">
+            <input id="username" type="input" value="tiny@huoban.com" class="text">
+            <input id="password" type="password" value="1231qa" class="text">
+            <input id="login" type="submit" value="登录" class="btn">
+          </form>
+      </div>
+    </div>
+  </div>
+  <div id="log"></div>
+  
+</body>
+</html>

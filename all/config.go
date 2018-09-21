@@ -10,10 +10,15 @@ import (
 	yaml "gopkg.in/yaml.v2"
 )
 
+type DebugConfig struct {
+	Port int
+}
+
 type Config struct {
-	API api.Config
-	B2S b2s.Config
-	C2S []c2s.Config
+	Debug DebugConfig
+	API   api.Config
+	B2S   b2s.Config
+	C2S   []c2s.Config
 }
 
 // FromFile loads default global configuration from

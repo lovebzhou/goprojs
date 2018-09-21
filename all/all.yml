@@ -2,14 +2,14 @@
 
 g_config1: g_config1_value
 
-# go tool pprof http://localhost:6060/debug/pprof
+# go tool pprof http://localhost:7654/debug/pprof
 # To use pprof, link this package into your program:
 #	import _ "net/http/pprof"
 debug: 
   port: 7654
 
 api:
-  port: 8080
+  port: 8000
 
 b2s:
   port: 8080

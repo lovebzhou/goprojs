@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Demo</title>
+  <script src="static/assets/js/jquery-1.12.4.min.js"></script>
+  <script src="static/assets/js/main.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.get("api/users", function(data, status) {
+        console.log(data);
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="console"></div>
+  <textarea id="log"></textarea>
+</body>
+</html>

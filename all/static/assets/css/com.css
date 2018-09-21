@@ -1,0 +1,19 @@
+
+body {
+    background: #f3f3f3;
+
+}
+
+body, dd, dl, form, h1, h2, h3, h4, h5, h6, li, ol, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body, button, input, select, textarea {
+    font: 12px/1.5 Lucida Grande,Lucida Sans Unicode,Helvetica Neue,Hiragino Sans GB,Microsoft Yahei,sans-serif;
+    color: #4b4b4b;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,.2);
+}

@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <script src="static/assets/js/jquery-1.12.4.min.js"></script>
+    <script type= "text/javascript">
+    $(document).ready(function() {
+      
+      $("#add").click(addUser);
+      
+      $("#modify").click(modifyUser);
+
+      $("#load").click(function() {
+        $.get("api/users", function(users, status) {
+          console.log(users);
+          refreshUsers(users);
+        });
+      });
+
+
+    });
+
+    // Add user
+    function addUser() {
+      var user = {
+        name: $("#user_name").val(),
+        age: parseInt(($("#user_age").val()))
+      };
+
+      // $.post("api/users", user, function(data, status) {
+      //   console.log(data, status);
+      // },"json");
+
+      $.ajax({
+        url:"api/users",
+        type:"POST",
+        data:JSON.stringify(user),
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+        success: function(data, status) {
+
+        }
+      });
+    }
+
+    function modifyUser() {
+      var user = {
+        id: $("#user_id").val(),
+        name: $("#user_name").val(),
+        age: parseInt(($("#user_age").val()))
+      };
+
+      $.ajax({
+        url:"api/users/"+user.id,
+        type:"PUT",
+        data:JSON.stringify(user),
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+        success: function(data, status) {
+
+        }
+      });
+    }
+
+    // 
+    function refreshUsers(users) {
+      var items = new Array();
+        for (k in users) {
+          var li = document.createElement("li");
+          var u = users[k];
+          li.innerHTML = "id = " + u.id + ", name = " + u.name + ", age = " + u.age;
+          items.push(li);  
+        }
+        $("#user_list").html(items);
+      }
+
+    </script>
+
+    <style type="text/css">
+      .container {
+        align: center;
+        
+      }
+
+    </style>
+  </head>
+  <body>
+    <h1>Users</h1>
+
+    <div class="container">
+      <p><input id="user_name" type="input" placeholder = "Name" value="ddd"></p>
+      <p><input id="user_age" type="input" placeholder = "Age" value="30"></p>
+      <p><input id="add" type="button" value="add"></p>
+      <p>
+        ID:<input id="user_id" type="input" placeholder = "ID" value="2">
+        <input id="modify" type="button" value="modify">
+      </p>
+    </div>
+    
+
+    <div class="container">
+        <input id="load" type="button" value="load">
+    
+        <ul id="user_list"></ul>
+    </div>
+
+  </body>
+</html>
