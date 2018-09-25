@@ -10,6 +10,7 @@
   <title>Login Demo</title>
   <link href="static/assets/css/com.css" rel="stylesheet">
   <style type="text/css">
+  
     .wrap {
         margin: 100px auto 40px;
         width: 400px;
@@ -94,17 +95,15 @@
 <body>
   <div class="wrap">
     <div class="container">
-      <div class="box">
-          <legend >登录</legend>
-          <form method="POST" action="login">
-            <input id="username" type="input" value="tiny@huoban.com" class="text">
-            <input id="password" type="password" value="1231qa" class="text">
-            <input id="login" type="submit" value="登录" class="btn">
-          </form>
-      </div>
+    <fieldset class="box">
+      <legend >登录</legend>
+      <form method="POST" action="login">
+        <input id="username" type="input" value="tiny@huoban.com" class="text">
+        <input id="password" type="password" value="1231qa" class="text">
+        <input id="login" type="submit" value="登录" class="btn">
+      </form>
+    </fieldset>
     </div>
   </div>
-  <div id="log"></div>
-  
 </body>
 </html>

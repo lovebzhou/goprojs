@@ -1,6 +1,7 @@
 <html>
   <head>
     <script src="static/assets/js/jquery-1.12.4.min.js"></script>
+    <script src="static/assets/js/vue.min.js"></script>
     <script type= "text/javascript">
     $(document).ready(function() {
       
@@ -61,16 +62,7 @@
     }
 
     // 
-    function refreshUsers(users) {
-      var items = new Array();
-        for (k in users) {
-          var li = document.createElement("li");
-          var u = users[k];
-          li.innerHTML = "id = " + u.id + ", name = " + u.name + ", age = " + u.age;
-          items.push(li);  
-        }
-        $("#user_list").html(items);
-      }
+   
 
     </script>
 
@@ -102,5 +94,36 @@
         <ul id="user_list"></ul>
     </div>
 
+    <div id="user_list2">
+      <ul>
+        <li v-for="user in users">
+          id = {{user.id}}, name = {{ user.name }}, age = {{user.age}}
+        </li>
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+      var vueUsers = new Vue({
+        el: '#user_list2',
+        data: {
+          users: []
+        }
+      });
+      
+    </script>
+
+    <script type="text/javascript">
+     function refreshUsers(users) {
+      var items = new Array();
+        for (k in users) {
+          var li = document.createElement("li");
+          var u = users[k];
+          li.innerHTML = "id = " + u.id + ", name = " + u.name + ", age = " + u.age;
+          items.push(li);  
+        }
+        $("#user_list").html(items);
+        vueUsers.users = users;
+      }
+    </script>
   </body>
 </html>
