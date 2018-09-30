@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="static/assets/js/jquery-1.12.4.js"></script>
   <script src="static/assets/js/vue-1.0.28.js"></script>
+  <!-- <script src="static/assets/js/vue-2.5.17.js"></script> -->
   <script type="text/javascript">
 
 
@@ -66,13 +67,24 @@
         }
       },
       methods:{
+        viewBook:function(book) {
+          this.book = book;
+        },
         addBook:function(){
           this.book.id = this.books.length + 1;
           this.books.push(this.book);
           this.book = '';
         },
         delBook:function(book){
-          this.books.$remove(book);
+          if (false) {
+            var i = this.books.indexOf(book);
+            if (i > -1) {
+              // delete this.books[i]; // ui not updating
+              this.books.splice(i, 1); // 2.5.7
+            }
+          } else {
+            this.books.$remove(book); // 1.0.28
+          }
         },
         sortBy:function(sortparam){
           this.sortparam = sortparam;
@@ -97,11 +109,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="book in books">
-              <td class="text-right">{{book.id}}</td>
-              <td class="text-right">{{book.name}}</td>
-              <td class="text-right">{{book.author}}</td>
-              <td class="text-right">{{book.price}}</td>
+            <tr v-for="book in books" @click="viewBook(book)">
+                <td class="text-right">{{book.id}}</td>
+                <td class="text-right">{{book.name}}</td>
+                <td class="text-right">{{book.author}}</td>
+                <td class="text-right">{{book.price}}</td>
               <template v-if="book.id%2==0">
                 <td class="text-right">
                   <button type="button" class="btn btn-success" @click="delBook(book)">删除</button>

@@ -4,9 +4,23 @@
  * Released under the MIT License.
  */
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global.Vue = factory());
+  // typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  // typeof define === 'function' && define.amd ? define(factory) :
+  // (global.Vue = factory());
+
+  console.log(typeof exports);
+  console.log(typeof module);
+  console.log(typeof define);
+
+  if (typeof exports === 'object' && typeof module !== 'undefined') {
+    module.exports = factory();
+  } else {
+    if (typeof define === 'function' && define.amd) {
+      define(factory);
+    } else {
+      global.Vue = factory();
+    }
+  }
 }(this, (function () { 'use strict';
 
 function set(obj, key, val) {
