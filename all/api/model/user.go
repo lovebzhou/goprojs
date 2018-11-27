@@ -3,6 +3,7 @@ package model
 import (
 	"fmt"
 	"net/http"
+	"sort"
 	"sync"
 
 	"github.com/ant0ine/go-json-rest/rest"
@@ -19,6 +20,18 @@ type Users struct {
 	Store map[string]*User
 }
 
+type UserList []User
+
+func (s UserList) Len() int { 
+	return len(s) 
+}
+
+func (s UserList) Swap(i, j int){
+	 s[i], s[j] = s[j], s[i] 
+}
+
+func (s UserList) Less(i, j int) bool { return s[i].ID < s[j].ID }
+
 func (u *Users) GetAllUsers(w rest.ResponseWriter, r *rest.Request) {
 	u.RLock()
 	users := make([]User, len(u.Store))
@@ -28,6 +41,7 @@ func (u *Users) GetAllUsers(w rest.ResponseWriter, r *rest.Request) {
 		i++
 	}
 	u.RUnlock()
+	sort.Sort(UserList(users))
 	w.WriteJson(&users)
 }
 

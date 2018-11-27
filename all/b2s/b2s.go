@@ -10,6 +10,12 @@ import (
 
 func StartService(config Config) {
 	log.Println("start b2s service ...")
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	log.Println("current dir:", wd)
 
 	http.HandleFunc("/", homeHandler)
 	// http.HandleFunc("/login", loginHandler)
@@ -27,7 +33,7 @@ func StartService(config Config) {
 
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	if len(r.URL.Path) > 1 {
-		http.ServeFile(w, r, fmt.Sprintf("static/views/%s.html",r.URL.Path))
+		http.ServeFile(w, r, fmt.Sprintf("static/views/%s.html", r.URL.Path))
 	} else {
 		http.ServeFile(w, r, "static/views/index.html")
 	}
